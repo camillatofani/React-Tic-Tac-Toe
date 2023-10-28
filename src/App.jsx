@@ -11,6 +11,7 @@ function App() {
 	const [player, setPlayer] = useState(true)
 	const [win, setWin] = useState(false)
 	const [tableStyle, setTableStyle] = useState({})
+	const [moves, setMoves] = useState(0)
 
 	function cellIndexFunc(e) {
 		var row = e.target.parentNode.getAttribute("data-id")
@@ -24,6 +25,10 @@ function App() {
 			}
 			setPlayer(!player)
 			aWinGame()
+			setMoves(moves + 1)
+			if (moves === 8) {
+				console.log('nope')
+			}
 			return newTable
 		})
 	}
@@ -65,7 +70,8 @@ function App() {
 	return (
 		<div>
 			<h1>Tic Tac Toe</h1>
-			{ player }
+			player: { player }
+			moves: { moves }
 			<div style={ tableStyle }>
 				{ table.map((row, rowIndex) => (
 					<div data-id={ rowIndex } key={ rowIndex } className="row">
