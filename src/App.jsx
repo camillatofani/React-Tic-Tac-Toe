@@ -51,6 +51,17 @@ function App() {
 		}
 	}
 
+	function resetGame() {
+		setPlayer(true)
+		setWin(false)
+		setTableStyle({})
+		setTable([
+			["", "", ""],
+			["", "", ""],
+			["", "", ""]
+		])
+	}
+
 	return (
 		<div>
 			<h1>Tic Tac Toe</h1>
@@ -65,6 +76,7 @@ function App() {
 				)) }
 			</div>
 			{ win && <h1>{ player ? "0" : "X"} ha vinto!!</h1> }
+			{ win && <button onClick={resetGame}>New game!</button> }
 		</div>
 	)
 }
